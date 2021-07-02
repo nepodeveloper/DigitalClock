@@ -1,36 +1,58 @@
-<div class="main-container">
-    <h1 style="font-weight: 900; text-align: center; margin: 15px 0;">Tic-Tac-Toe</h1>
-    <div class="field d-flex justify-content-center">
-        <p class="current-status mat-display-1" style="color: white;">Start the game on the button</p>
+<div class="row">
+    <h1><span class="gold">Tic-</span>Tac<span class="gold">-Toe</span></h1>
+            <div class="field d-flex justify-content-center">
+                <p class="current-status mat-display-1" style="color: white;">Start the game on the button</p>
+            </div>
+            <div *ngIf="game.gameStatus === 0" class="field d-flex justify-content-center">
+                <button (click)="startGame()"class="btn btn-secondary"> Start Game Now</button>
+            </div>
+    <div class="col-md-6">
+        <div class="main-container">
+            <div *ngIf="game.gameStatus === 1" class="gameboard">
+                <div class="players player-one align-self-center">
+                    <p class="current-status mat-display-1" style="margin: 0 0 0 10px;">Player 1</p>
+                </div>
+                <div class="gamefield container-fluid">
+                    <div class="row">
+                        <div (click)="clickSubfield($event)" position="0" class="subfield col-4"></div>
+                        <div (click)="clickSubfield($event)" position="1" class="subfield col-4"></div>
+                        <div (click)="clickSubfield($event)" position="2" class="subfield col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div (click)="clickSubfield($event)" position="3" class="subfield col-4"></div>
+                        <div (click)="clickSubfield($event)" position="4" class="subfield col-4"></div>
+                        <div (click)="clickSubfield($event)" position="5" class="subfield col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div (click)="clickSubfield($event)" position="6" class="subfield col-4"></div>
+                        <div (click)="clickSubfield($event)" position="7" class="subfield col-4"></div>
+                        <div (click)="clickSubfield($event)" position="8" class="subfield col-4"></div>
+                    </div>
+                </div>
+                <div class="players player-two align-self-center">
+                    <p class="current-status mat-display-1"  style="margin: 0 0 0 10px;">Player 2</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div *ngIf="game.gameStatus === 0" class="field d-flex justify-content-center">
-        <button (click)="startGame()" mat-raised-button style="color:yellow;" class="start-game-button"> Start Game Now</button>
-    </div>
-
-    <div *ngIf="game.gameStatus === 1" class="gameboard">
-        <div class="players player-one align-self-center">
-            <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 10px;">Player 1</p>
-        </div>
-        <div class="gamefield container-fluid">
-            <div class="row">
-                <div (click)="clickSubfield($event)" position="0" class="subfield col-4"></div>
-                <div (click)="clickSubfield($event)" position="1" class="subfield col-4"></div>
-                <div (click)="clickSubfield($event)" position="2" class="subfield col-4"></div>
+    <div *ngIf="game.gameStatus === 1" class="col-md-4 align-self-center">
+        <div class="stopwatch">
+            <div class="circle">
+              <span class="time" id="display">00:00:00</span>
             </div>
-            <div class="row">
-                <div (click)="clickSubfield($event)" position="3" class="subfield col-4"></div>
-                <div (click)="clickSubfield($event)" position="4" class="subfield col-4"></div>
-                <div (click)="clickSubfield($event)" position="5" class="subfield col-4"></div>
+            <div class="controls">
+              <button class="buttonPlay">
+                <img id="playButton" src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/play-button_opkxmt.svg" />
+        
+                <img id="pauseButton" src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/pause-button_pinhpy.svg" />
+              </button>
+        
+              <button class="buttonReset">
+                <img id="resetButton" src="https://res.cloudinary.com/https-tinloof-com/image/upload/v1593360448/blog/time-in-js/reset-button_mdv6wf.svg" />
+              </button>
             </div>
-            <div class="row">
-                <div (click)="clickSubfield($event)" position="6" class="subfield col-4"></div>
-                <div (click)="clickSubfield($event)" position="7" class="subfield col-4"></div>
-                <div (click)="clickSubfield($event)" position="8" class="subfield col-4"></div>
-            </div>
-        </div>
-        <div class="players player-two align-self-center">
-            <p class="mat-body-1" style="font-weight: 700; margin: 0 50px 10px 0;">Player 2</p>
-        </div>
+          </div>
     </div>
 </div>
+<script src="./game/script.js"></script>
+  
